@@ -1,0 +1,11 @@
+{% extends "event/form_base.html" %}
+{% load static %}
+{% block form %}
+
+<h1>Register for Event!</h1>
+<form method="POST" class="event-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Register</button>
+</form>
+{% endblock form %}

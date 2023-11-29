@@ -1,0 +1,34 @@
+{% extends "event/form_base.html" %}
+{% load static %}
+
+    
+
+
+{% block form %}
+<h1>Create a event and get Approved!</h1>
+<form method="POST" class="event-form">
+    {% csrf_token %}
+   
+    <label for="{{form.title.name}}"> Title:</label>
+    {{form.title}}
+
+    <label for=" {{ form.description.name}}"> Description:</label>
+    {{ form.description}}
+    
+    <label for=" {{ form.location.name}}"> Location:</label>
+    {{ form.location}}
+
+  <label for="appt">Select a time:</label>
+  <input type="time" id="appt" name="appt">
+  <label for="birthday">Date:</label>
+  <input type="date" id="birthday" name="birthday">
+
+
+    {{ form.organizer}}
+    {{form.errors}}
+
+    
+    <button type="submit">Create</button>
+</form>
+
+{% endblock form %}

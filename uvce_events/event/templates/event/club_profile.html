@@ -1,0 +1,26 @@
+{% extends "event/base.html" %}
+{% load static %}
+
+
+
+
+{% block user_content %}
+{% for event in events %}
+           
+               <h1>{{event.title}}</h1>
+               <h1>{{event.description}}</h1>
+               <h1>{{event.datetime}}</h1>
+               <h1>{{event.location}}</h1>
+               <h1>{{event.organizer}}</h1>
+               {% if   %}
+               <button type="submit">Edit</button>
+               <a href="delete/{{event.id}}"><button type="submit">Delete</button></a>
+               {% endif %}
+            <br>
+        {% empty %}
+
+            <li>No events found.</li>
+        {% endfor %}
+
+
+{% endblock user_content %} 

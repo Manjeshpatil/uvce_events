@@ -1,0 +1,120 @@
+{% extends "event/base.html" %}
+{% load static %}
+
+<!--for clubs and staff acesss-->
+
+{% block user_content %}
+<div class="container1">
+   
+    <ul>
+        
+        {% for event in user_events %}
+        <li>
+        <div class="event-details">
+            {% comment %} <div>
+                <h1 class="head" >Organizer:</h1>
+                <h1 class="head" >{{ event.organizer }}</h1>
+            </div> {% endcomment %}
+            <div>
+                <h1>Event Name:</h1>
+                <h1>{{ event.title }}</h1>
+            </div>
+            <div>
+                <h1>About:</h1>
+                <h1>{{ event.description }}</h1>
+            </div>
+            <div>
+                <h1>Time:</h1>
+                <h1>{{ event.start_date }}</h1>
+            </div>
+            <div>
+                <h1>Venue:</h1>
+                <h1>{{ event.location }}</h1>
+            </div>
+            <div>
+                <h1>Deadline To Register:</h1>
+                <h1>{{ event.registration_deadline }}</h1>
+            </div>
+            
+        
+                {% if event.registration_deadline > now %}
+                    <a href="{% url "home"%}"> <button class="edit-button">EDIT</button> </a>
+                {% else %}
+                <button class="registration-button" disabled>Confirmed!</button>
+                {% endif %}
+        </div>
+            <br>
+        {% empty %}
+
+            <li>No events found.</li>
+        </li>
+        {% endfor %}
+    
+    </ul>
+</div>
+
+    <br>
+
+
+    
+{% endblock user_content %}
+
+
+<!-- student acesss-->
+{% block content %}
+<div class="container1">
+    <ul>
+        
+        {% for event in events %}
+        <li>
+        <div class="event-details">
+            <div>
+                <h1 class="head" >Organizer:</h1>
+                <h1 class="head" >{{ event.organizer }}</h1>
+            </div>
+            <div>
+                <h1>Event Name:</h1>
+                <h1>{{ event.title }}</h1>
+            </div>
+            <div>
+                <h1>About:</h1>
+                <h1>{{ event.description }}</h1>
+            </div>
+            <div>
+                <h1>Number of Participants:</h1>
+                <h1>{{participants}}</h1>
+            </div>
+            <div>
+                <h1>Time:</h1>
+                <h1>{{ event.start_date }}</h1>
+            </div>
+            <div>
+                <h1>Venue:</h1>
+                <h1>{{ event.location }}</h1>
+            </div>
+            <div>
+                <h1>Deadline To Register:</h1>
+                <h1>{{ event.registration_deadline }}</h1>
+            </div>
+        
+                {% if event.registration_deadline >  now %}
+                    <a href="{% url "student_Register"%}"> <button class="edit-button">Register</button> </a>
+                {% else %}
+                <button class="registration-button" disabled>Registration Closed</button>
+                {% endif %}
+        </div>
+            <br>
+        {% empty %}
+
+            <li>No events found.</li>
+        </li>
+        {% endfor %}
+
+    
+    </ul>
+</div>
+
+    <br>
+
+   
+{% endblock content %}

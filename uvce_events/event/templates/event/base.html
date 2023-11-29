@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'event/home.css'%}">
+    <link
+      rel="stylesheet"
+      href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <title>UVCE_Events</title>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="navbar">
+          <div class="logo">
+            {% comment %} <img src="img/logo-color.png" alt="" /> {% endcomment %}
+          </div>
+          <nav>
+            <div class="btn">
+              <i class="fa fa-times close-btn"></i>
+            </div>
+            <li><a href="#">Home</a></li>
+            {% if request.user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">logout</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">login</a></li>
+                <li><a href="{% url 'signup' %}">signup</a></li>
+            {% endif %}
+                <li><a href="#">Contact</a></li>
+          </nav>
+          <div class="btn">
+            <i class="fa fa-bars menu-btn"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section>
+        <div class="container">
+            <div class="content">
+                <h2>Welcome!</h2>
+                {% if request.user.is_authenticated%}
+                <h2>{{request.user.username}}</h2>
+                <a href="{% url 'create_event' %}"><button> Create Event</button></a>
+                {% else %}
+                <h2>UVCE Students</h2>
+                {% endif %}
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
+                sed, officia quae eum iusto ratione autem eius minus, nisi
+                laboriosam id ullam aliquam sunt deserunt, magni natus maiores
+                placeat perferendis.
+              </p>
+
+              <button>Explore More</button>
+              <div class="social_icons">
+                <i class="fa fa-brands fa-facebook"></i>
+                <i class="fa fa-brands fa-twitter"></i>
+                <i class="fa fa-brands fa-instagram"></i>
+                <i class="fa fa-brands fa-pinterest"></i>
+              </div>
+            </div>
+          </div>
+        </section>
+    {% if request.user.is_authenticated and user_events %}
+    <h1 class=" waste"> Your Past Events</h1>
+
+
+    {% block user_content %}
+
+    {% endblock user_content %}
+
+
+    {% else %}
+
+    {% block content %}
+    {% endblock content %}
+
+
+    {% endif %}
+      </body>
+    </html>
+      

@@ -1,0 +1,61 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: rgb(0, 87, 87);   
+    margin: 0;
+    padding: 0;
+    color: rgb(255, 255, 255);
+    
+}
+h1{
+    text-align: center;
+}
+.event-form {
+    max-width: 500px;
+    margin: 50px auto; /* Added some top margin for better centering */
+   
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Added a subtle box shadow */
+}
+
+/* Style form fields */
+.event-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.event-form .label{
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #ffffff;
+
+}
+.event-form input,
+.event-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+/* Style submit button */
+.create-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease; /* Added a smooth transition effect */
+}
+
+.create-button:hover {
+    background-color: #45a049;
+}
+

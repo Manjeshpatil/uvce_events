@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'event/home.css'%}">
+    
+    <title>Home</title>
+</head>
+<body>
+
+    <div class="wrapper">
+    <div class="Container">
+          <div class="nav">
+              <div class="logo">
+                  LOGO
+              </div>
+              <div class="menu">
+                  <ul class="navMenu">
+                    {% if request.user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}">logout</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}">login</a></li>
+                        <li><a href="{% url 'signup' %}">signup</a></li>
+                    {% endif %}
+                      <li><a href="#">Contact</a></li>
+                     
+                  </ul>
+              </div>
+          </div>
+
+
+          {% if request.user.is_authenticated%}
+            <div class="header">
+            <h1>Welcome!</h1>
+            <p>{{request.user.username}}</p>
+            <a href="{% url 'create_event'%}"> <button type="button"> Create Event</button></a>
+            {% comment %} <a href="{% url 'club_profile' username='username' %}"> <button type="button"> past_events </button></a> {% endcomment %}
+            </div>
+          {% endif %}
+
+      </div>
+  </div>
+  <h1>Events</h1>
+
+
+  
+  <div class="wrapper1">
+    {% if request.user.is_authenticated%}
+
+    {% block user_content %}
+    {% endblock user_content %}
+
+
+    {% else %}
+
+    {% block content %}
+    {% endblock content %}
+
+
+    {% endif %}
+
+  </div>
+
+  
+    
+
+
+
+</body>
+</html>
